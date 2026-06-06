@@ -795,6 +795,59 @@ body {
   to { top: -80px; opacity: 0; }
 }
 
+/* ====== Campus Gallery ====== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 640px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+.gallery-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--card-bg);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow), var(--card-shadow-inset);
+  transition: all 0.4s var(--spring);
+  aspect-ratio: 4/3;
+}
+
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  border-color: var(--accent-glow-strong);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--spring);
+}
+
+.gallery-card:hover img { transform: scale(1.04); }
+
+.gallery-label {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: var(--radius-xl);
+  letter-spacing: -0.1px;
+}
+
 /* ====== Footer ====== */
 .footer {
   position: relative; z-index: 1;
@@ -1022,6 +1075,25 @@ body {
       <div class="school-icon">🤝</div>
       <div class="school-name">校企合作</div>
       <div class="school-majors">200+知名企业合作 · 225个实验实训室 · 188个校外实习基地 · 1+X证书制度</div>
+    </div>
+  </div>
+</section>
+
+<!-- Campus Gallery -->
+<section class="section fade-in" id="campus">
+  <div class="section-label">校园风光</div>
+  <h2>幸福河畔<br>亭台湖石</h2>
+  <p class="desc">
+    校园坐落在周口市幸福河畔，亭台相望、湖石相依，自然与人文和谐交融。春有花、夏有荫、秋有果、冬有绿，四季皆景。
+  </p>
+  <div class="gallery-grid">
+    <div class="gallery-card">
+      <img src="images/campus-01.jpg" alt="河南科技职业大学校园风光" loading="lazy">
+      <span class="gallery-label">校园风光</span>
+    </div>
+    <div class="gallery-card">
+      <img src="images/campus-02.jpg" alt="河南科技职业大学校园风光" loading="lazy">
+      <span class="gallery-label">校园风光</span>
     </div>
   </div>
 </section>
