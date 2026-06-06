@@ -1260,131 +1260,49 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// ====== 🔒 安全防护系统 ======
+// ====== 🔒 轻量安全防护 ======
 (function() {
   'use strict';
 
-  /* --- 1. 爬虫/自动化检测 & 拦截 --- */
+  /* --- 1. 爬虫自动化检测（只拦截明确的无头浏览器） --- */
   var isBot = false;
-  // 检测无头浏览器特征
   if (navigator.webdriver) isBot = true;
   if (navigator.userAgent.indexOf('HeadlessChrome') > -1) isBot = true;
   if (navigator.userAgent.indexOf('PhantomJS') > -1) isBot = true;
-  if (navigator.plugins.length === 0 && navigator.mimeTypes.length === 0) isBot = true;
-  if (!navigator.languages || navigator.languages.length === 0) isBot = true;
-  // 检测 Selenium/Puppeteer/Playwright 痕迹
   if (window.__webdriver_evaluate || window.__selenium_evaluate || window.__fxdriver_evaluate) isBot = true;
   if (document.documentElement.getAttribute('webdriver')) isBot = true;
   if (window.callPhantom || window._phantom || window.__nightmare) isBot = true;
-  // Chrome 特殊检测
-  var c = window.chrome;
-  if (!c || !c.runtime || !c.app || Object.keys(c).length === 0) {
-    var ua = navigator.userAgent;
-    if (ua.indexOf('Chrome') > -1 && ua.indexOf('Edge') === -1) isBot = true;
-  }
   if (isBot) {
     document.documentElement.innerHTML = '<div style="text-align:center;padding:100px 20px;font-family:sans-serif;"><h1>403 Forbidden</h1><p>检测到自动化访问，请求已被拒绝。</p></div>';
-    throw new Error('Access Denied: Automated browsing detected');
+    throw new Error('Access Denied');
   }
 
-  /* --- 2. 控制台检测 — 打开开发者工具自动跳转警告页 --- */
-  var devtoolsOpen = false;
-  var threshold = 160;
-  var devCheck = function() {
-    var w = window.outerWidth - window.innerWidth;
-    var h = window.outerHeight - window.innerHeight;
-    if (w > threshold || h > threshold) {
-      if (!devtoolsOpen) {
-        devtoolsOpen = true;
-        document.body.innerHTML = '<div style="text-align:center;padding:100px 20px;font-family:sans-serif;color:#c00;"><h1>⚠ 安全警告</h1><p>检测到开发者工具已打开。</p><p>出于安全原因，页面已被阻止。</p><p>请关闭开发者工具后刷新页面。</p></div>';
-      }
-    } else {
-      devtoolsOpen = false;
-    }
-  };
-  setInterval(devCheck, 1000);
-
-  /* --- 3. Debugger 陷阱 —— 检测到控制台时触发 --- */
-  setInterval(function() {
-    var before = new Date();
-    debugger;
-    var after = new Date();
-    if (after.getTime() - before.getTime() > 100) {
-      document.body.innerHTML = '<div style="text-align:center;padding:100px 20px;font-family:sans-serif;color:#c00;"><h1>⚠ 安全警告</h1><p>检测到调试行为，页面已锁定。</p></div>';
-      while(true) { /* 死循环锁定 */ }
-    }
-  }, 2000);
-
-  /* --- 4. 右键禁用 --- */
+  /* --- 2. 右键禁用 --- */
   document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
     return false;
   });
 
-  /* --- 5. 键盘快捷键拦截 --- */
+  /* --- 3. 快捷键拦截（仅阻止源码查看和保存） --- */
   document.addEventListener('keydown', function(e) {
-    // F12
-    if (e.keyCode === 123) { e.preventDefault(); return false; }
-    // Ctrl+Shift+I (DevTools)
-    if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) { e.preventDefault(); return false; }
-    // Ctrl+Shift+C (元素检查)
-    if (e.ctrlKey && e.shiftKey && e.keyCode === 67) { e.preventDefault(); return false; }
-    // Ctrl+U (查看源代码)
-    if (e.ctrlKey && e.keyCode === 85) { e.preventDefault(); return false; }
-    // Ctrl+S (保存页面)
-    if (e.ctrlKey && e.keyCode === 83) { e.preventDefault(); return false; }
-    // Ctrl+P (打印)
-    if (e.ctrlKey && e.keyCode === 80) { e.preventDefault(); return false; }
-    // Ctrl+Shift+J (控制台)
-    if (e.ctrlKey && e.shiftKey && e.keyCode === 74) { e.preventDefault(); return false; }
+    if (e.keyCode === 123) { e.preventDefault(); return false; }           // F12
+    if (e.ctrlKey && e.keyCode === 85) { e.preventDefault(); return false; } // Ctrl+U
+    if (e.ctrlKey && e.keyCode === 83) { e.preventDefault(); return false; } // Ctrl+S
   });
 
-  /* --- 6. 防止 iframe 嵌套（点击劫持防护） --- */
+  /* --- 4. 防止 iframe 嵌套 --- */
   if (window.top !== window.self) {
     window.top.location = window.self.location;
   }
 
-  /* --- 7. 蜜罐链接 —— 爬虫踩中即封锁 --- */
-  var honeypot = document.createElement('a');
-  honeypot.href = '/trap';
-  honeypot.style.cssText = 'position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;';
-  honeypot.textContent = 'trap';
-  document.body.appendChild(honeypot);
-  honeypot.addEventListener('click', function(e) {
-    document.body.innerHTML = '<h1>403 Forbidden — Bot Trapped</h1>';
-    e.preventDefault();
+  /* --- 5. 蜜罐陷阱（静默，不影响正常用户） --- */
+  document.addEventListener('DOMContentLoaded', function() {
+    var honeypot = document.createElement('a');
+    honeypot.href = '/trap';
+    honeypot.style.cssText = 'position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;';
+    honeypot.textContent = 'trap';
+    document.body.appendChild(honeypot);
   });
-
-  /* --- 8. 控制台警告 --- */
-  console.clear();
-  console.log('%c⚠ 安全警告', 'color:red;font-size:40px;font-weight:bold;');
-  console.log('%c本站受防护系统保护，请勿在此页面使用开发者工具。', 'font-size:16px;');
-  console.log('%c所有操作已被记录。', 'color:#666;font-size:12px;');
-
-  /* --- 9. MutationObserver 防 DOM 篡改 --- */
-  var obs = new MutationObserver(function(mutations) {
-    mutations.forEach(function(m) {
-      if (m.type === 'childList' && m.removedNodes.length > 0) {
-        m.removedNodes.forEach(function(node) {
-          if (node.nodeType === 1 && (node.tagName === 'SCRIPT' || node.className === 'toast')) return;
-          if (node.nodeType === 1 && node.querySelectorAll) {
-            var important = node.querySelectorAll('[data-protected]');
-            if (important.length > 0) {
-              location.reload();
-            }
-          }
-        });
-      }
-    });
-  });
-  obs.observe(document.documentElement, { childList: true, subtree: true });
-
-  /* --- 10. 定时完整性检查 --- */
-  setInterval(function() {
-    if (!document.body || document.body.innerHTML.length < 100) {
-      location.reload();
-    }
-  }, 5000);
 
 })();
 
