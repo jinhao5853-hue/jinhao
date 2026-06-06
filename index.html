@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="author" content="靳浩">
+<meta name="description" content="河南科技职业大学 - 厚德博学、求实创新">
+<title>河南科技职业大学</title>
+<style>
+/* ====== CSS Variables (默认：浅色) ====== */
+:root {
+  --font-stack: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --bg-body: #f5f5f7;
+  --bg-orb-1: #0071e3;
+  --bg-orb-2: #5ac8fa;
+  --bg-orb-3: #bf5af2;
+  --card-bg: rgba(255,255,255,0.72);
+  --card-border: rgba(0,0,0,0.06);
+  --text-primary: #1d1d1f;
+  --text-secondary: rgba(0,0,0,0.72);
+  --text-muted: rgba(0,0,0,0.48);
+  --text-ghost: rgba(0,0,0,0.2);
+  --accent-1: #0071e3;
+  --accent-2: #5ac8fa;
+  --accent-glow: rgba(0,113,227,0.18);
+  --accent-glow-strong: rgba(0,113,227,0.35);
+  --surface-bg: rgba(0,0,0,0.04);
+  --surface-bg-hover: rgba(0,0,0,0.08);
+  --surface-bg-alt: rgba(0,0,0,0.03);
+  --surface-border: rgba(0,0,0,0.08);
+  --tab-bg: rgba(0,0,0,0.05);
+  --tab-active-bg: rgba(255,255,255,0.92);
+  --tab-active-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);
+  --card-shadow-inset: inset 0 0.5px 0 rgba(255,255,255,0.9);
+  --divider: rgba(0,0,0,0.06);
+  --modal-bg: rgba(245,245,247,0.92);
+  --scrollbar-thumb: rgba(0,0,0,0.15);
+  --toast-bg: #1d1d1f;
+  --toast-shadow: rgba(0,0,0,0.12);
+  --hero-gradient: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(245,245,247,1) 100%);
+  --nav-blur: rgba(245,245,247,0.72);
+  --stat-number-color: #0071e3;
+}
+
+/* ====== 深空灰 ====== */
+[data-theme="darkgray"] {
+  --bg-body: #1d1d1f;
+  --bg-orb-1: #2997ff;
+  --bg-orb-2: #5ac8fa;
+  --bg-orb-3: #a855f7;
+  --card-bg: rgba(255,255,255,0.08);
+  --card-border: rgba(255,255,255,0.08);
+  --text-primary: #f5f5f7;
+  --text-secondary: rgba(255,255,255,0.82);
+  --text-muted: rgba(255,255,255,0.48);
+  --text-ghost: rgba(255,255,255,0.2);
+  --accent-1: #2997ff;
+  --accent-2: #5ac8fa;
+  --accent-glow: rgba(41,151,255,0.2);
+  --accent-glow-strong: rgba(41,151,255,0.4);
+  --surface-bg: rgba(255,255,255,0.08);
+  --surface-bg-hover: rgba(255,255,255,0.14);
+  --surface-bg-alt: rgba(255,255,255,0.05);
+  --surface-border: rgba(255,255,255,0.1);
+  --tab-bg: rgba(255,255,255,0.06);
+  --tab-active-bg: rgba(255,255,255,0.14);
+  --tab-active-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.3), 0 8px 32px rgba(0,0,0,0.2);
+  --card-shadow-inset: inset 0 0.5px 0 rgba(255,255,255,0.08);
+  --divider: rgba(255,255,255,0.08);
+  --modal-bg: rgba(29,29,31,0.94);
+  --scrollbar-thumb: rgba(255,255,255,0.18);
+  --toast-bg: #f5f5f7;
+  --toast-shadow: rgba(0,0,0,0.3);
+  --hero-gradient: linear-gradient(180deg, rgba(29,29,31,0) 0%, rgba(29,29,31,1) 100%);
+  --nav-blur: rgba(29,29,31,0.72);
+  --stat-number-color: #2997ff;
+}
+
+/* ====== 午夜黑 ====== */
+[data-theme="midnight"] {
+  --bg-body: #000000;
+  --bg-orb-1: #0a84ff;
+  --bg-orb-2: #5e5ce6;
+  --bg-orb-3: #bf5af2;
+  --card-bg: rgba(255,255,255,0.07);
+  --card-border: rgba(255,255,255,0.06);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255,255,255,0.82);
+  --text-muted: rgba(255,255,255,0.48);
+  --text-ghost: rgba(255,255,255,0.18);
+  --accent-1: #0a84ff;
+  --accent-2: #5e5ce6;
+  --accent-glow: rgba(10,132,255,0.22);
+  --accent-glow-strong: rgba(10,132,255,0.42);
+  --surface-bg: rgba(255,255,255,0.08);
+  --surface-bg-hover: rgba(255,255,255,0.14);
+  --surface-bg-alt: rgba(255,255,255,0.04);
+  --surface-border: rgba(255,255,255,0.1);
+  --tab-bg: rgba(255,255,255,0.06);
+  --tab-active-bg: rgba(255,255,255,0.14);
+  --tab-active-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3);
+  --card-shadow-inset: inset 0 0.5px 0 rgba(255,255,255,0.06);
+  --divider: rgba(255,255,255,0.06);
+  --modal-bg: rgba(0,0,0,0.94);
+  --scrollbar-thumb: rgba(255,255,255,0.18);
+  --toast-bg: #f5f5f7;
+  --toast-shadow: rgba(0,0,0,0.4);
+  --hero-gradient: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+  --nav-blur: rgba(0,0,0,0.72);
+  --stat-number-color: #0a84ff;
+}
+
+/* ====== 深海 ====== */
+[data-theme="ocean"] {
+  --bg-body: #0b1b2f;
+  --bg-orb-1: #5ac8fa;
+  --bg-orb-2: #0a84ff;
+  --bg-orb-3: #30d158;
+  --card-bg: rgba(255,255,255,0.06);
+  --card-border: rgba(255,255,255,0.08);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255,255,255,0.82);
+  --text-muted: rgba(255,255,255,0.48);
+  --text-ghost: rgba(255,255,255,0.2);
+  --accent-1: #5ac8fa;
+  --accent-2: #0a84ff;
+  --accent-glow: rgba(90,200,250,0.2);
+  --accent-glow-strong: rgba(90,200,250,0.4);
+  --surface-bg: rgba(255,255,255,0.08);
+  --surface-bg-hover: rgba(255,255,255,0.14);
+  --surface-bg-alt: rgba(255,255,255,0.05);
+  --surface-border: rgba(255,255,255,0.1);
+  --tab-bg: rgba(255,255,255,0.06);
+  --tab-active-bg: rgba(255,255,255,0.14);
+  --tab-active-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.3), 0 8px 32px rgba(0,0,0,0.2);
+  --card-shadow-inset: inset 0 0.5px 0 rgba(255,255,255,0.06);
+  --divider: rgba(255,255,255,0.06);
+  --modal-bg: rgba(11,27,47,0.94);
+  --scrollbar-thumb: rgba(255,255,255,0.18);
+  --toast-bg: #f5f5f7;
+  --toast-shadow: rgba(0,0,0,0.3);
+  --hero-gradient: linear-gradient(180deg, rgba(11,27,47,0) 0%, rgba(11,27,47,1) 100%);
+  --nav-blur: rgba(11,27,47,0.72);
+  --stat-number-color: #5ac8fa;
+}
+
+/* ====== 枫叶（金秋学术风） ====== */
+[data-theme="maple"] {
+  --bg-body: #faf8f2;
+  --bg-orb-1: #c7512e;
+  --bg-orb-2: #e8a838;
+  --bg-orb-3: #d4456a;
+  --card-bg: rgba(255,255,255,0.7);
+  --card-border: rgba(0,0,0,0.06);
+  --text-primary: #1d1d1f;
+  --text-secondary: rgba(0,0,0,0.72);
+  --text-muted: rgba(0,0,0,0.48);
+  --text-ghost: rgba(0,0,0,0.2);
+  --accent-1: #c7512e;
+  --accent-2: #e8a838;
+  --accent-glow: rgba(199,81,46,0.15);
+  --accent-glow-strong: rgba(199,81,46,0.3);
+  --surface-bg: rgba(0,0,0,0.04);
+  --surface-bg-hover: rgba(0,0,0,0.08);
+  --surface-bg-alt: rgba(0,0,0,0.03);
+  --surface-border: rgba(0,0,0,0.08);
+  --tab-bg: rgba(0,0,0,0.05);
+  --tab-active-bg: rgba(255,255,255,0.92);
+  --tab-active-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);
+  --card-shadow-inset: inset 0 0.5px 0 rgba(255,255,255,0.9);
+  --divider: rgba(0,0,0,0.06);
+  --modal-bg: rgba(250,248,242,0.92);
+  --scrollbar-thumb: rgba(0,0,0,0.15);
+  --toast-bg: #1d1d1f;
+  --toast-shadow: rgba(0,0,0,0.12);
+  --hero-gradient: linear-gradient(180deg, rgba(250,248,242,0) 0%, rgba(250,248,242,1) 100%);
+  --nav-blur: rgba(250,248,242,0.72);
+  --stat-number-color: #c7512e;
+}
+
+/* ====== 樱色（春日校园） ====== */
+[data-theme="sakura"] {
+  --bg-body: #faf5f7;
+  --bg-orb-1: #e894a8;
+  --bg-orb-2: #c7a0d8;
+  --bg-orb-3: #f0c8c8;
+  --card-bg: rgba(255,255,255,0.7);
+  --card-border: rgba(0,0,0,0.05);
+  --text-primary: #2d1d24;
+  --text-secondary: rgba(45,29,36,0.72);
+  --text-muted: rgba(45,29,36,0.48);
+  --text-ghost: rgba(45,29,36,0.2);
+  --accent-1: #c47a8b;
+  --accent-2: #b08dc4;
+  --accent-glow: rgba(196,122,139,0.18);
+  --accent-glow-strong: rgba(196,122,139,0.35);
+  --surface-bg: rgba(45,29,36,0.04);
+  --surface-bg-hover: rgba(45,29,36,0.08);
+  --surface-bg-alt: rgba(45,29,36,0.03);
+  --surface-border: rgba(45,29,36,0.08);
+  --tab-bg: rgba(45,29,36,0.05);
+  --tab-active-bg: rgba(255,255,255,0.92);
+  --tab-active-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.05), 0 8px 32px rgba(0,0,0,0.03);
+  --card-shadow-inset: inset 0 0.5px 0 rgba(255,255,255,0.9);
+  --divider: rgba(45,29,36,0.06);
+  --modal-bg: rgba(250,245,247,0.92);
+  --scrollbar-thumb: rgba(45,29,36,0.12);
+  --toast-bg: #2d1d24;
+  --toast-shadow: rgba(0,0,0,0.12);
+  --hero-gradient: linear-gradient(180deg, rgba(250,245,247,0) 0%, rgba(250,245,247,1) 100%);
+  --nav-blur: rgba(250,245,247,0.72);
+  --stat-number-color: #c47a8b;
+}
+
+/* ====== Base ====== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-stack);
+  background: var(--bg-body);
+  color: var(--text-primary);
+  transition: background 0.6s var(--spring), color 0.5s var(--spring);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ====== Background Orbs ====== */
+.bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.4;
+  animation: float 28s ease-in-out infinite;
+  transition: background 0.6s var(--spring);
+}
+
+.bg-orb:nth-child(1) {
+  width: 560px; height: 560px;
+  background: var(--bg-orb-1);
+  top: -160px; left: -100px;
+  animation-delay: 0s;
+}
+
+.bg-orb:nth-child(2) {
+  width: 420px; height: 420px;
+  background: var(--bg-orb-2);
+  bottom: -100px; right: -80px;
+  animation-delay: -9s;
+}
+
+.bg-orb:nth-child(3) {
+  width: 340px; height: 340px;
+  background: var(--bg-orb-3);
+  top: 60%; left: 60%;
+  transform: translate(-50%, -50%);
+  animation-delay: -18s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(40px, -25px) scale(1.05); }
+  50% { transform: translate(-20px, 20px) scale(0.95); }
+  75% { transform: translate(-30px, -20px) scale(1.03); }
+}
+
+/* ====== Navigation ====== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  background: var(--nav-blur);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border-bottom: 1px solid var(--divider);
+  transition: background 0.5s var(--spring), border-color 0.5s var(--spring);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+}
+
+.nav-logo {
+  font-size: 16px; font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+  transition: color 0.5s var(--spring);
+  text-decoration: none;
+}
+
+.nav-links { display: flex; gap: 4px; align-items: center; }
+
+.nav-link {
+  font-size: 13px; font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: var(--radius-xl);
+  transition: all 0.25s var(--spring);
+  letter-spacing: -0.1px;
+}
+
+.nav-link:hover { color: var(--text-primary); background: var(--surface-bg); }
+
+.theme-btn {
+  font-size: 13px; font-weight: 500;
+  color: var(--text-muted);
+  background: none; border: none;
+  font-family: var(--font-stack); cursor: pointer;
+  padding: 6px 14px;
+  border-radius: var(--radius-xl);
+  transition: all 0.25s var(--spring);
+  letter-spacing: -0.1px;
+}
+
+.theme-btn:hover { color: var(--accent-1); background: var(--accent-glow); }
+
+/* ====== Hero ====== */
+.hero {
+  position: relative; z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 24px 80px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: var(--surface-bg);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl);
+  font-size: 13px; font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  animation: fadeUp 0.6s var(--spring) backwards;
+  transition: all 0.5s var(--spring);
+  letter-spacing: -0.1px;
+}
+
+.hero-badge .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #30d158;
+  box-shadow: 0 0 8px rgba(48,209,88,0.5);
+}
+
+.hero-crest {
+  width: 80px; height: 80px;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  margin-bottom: 28px;
+  box-shadow: 0 8px 32px var(--accent-glow), 0 2px 8px rgba(0,0,0,0.06);
+  transition: all 0.5s var(--spring);
+  animation: fadeUp 0.6s var(--spring) 0.1s backwards;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -1.2px;
+  line-height: 1.15;
+  transition: color 0.5s var(--spring);
+  animation: fadeUp 0.6s var(--spring) 0.2s backwards;
+}
+
+.hero .motto {
+  font-size: 20px;
+  color: var(--text-muted);
+  margin-top: 16px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  transition: color 0.5s var(--spring);
+  animation: fadeUp 0.6s var(--spring) 0.3s backwards;
+}
+
+.hero .motto span {
+  display: inline-block;
+  margin: 0 12px;
+}
+
+.hero-scroll {
+  position: absolute; bottom: 40px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  animation: fadeUp 0.6s var(--spring) 0.6s backwards;
+}
+
+.hero-scroll span {
+  font-size: 11px; color: var(--text-ghost);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.hero-scroll .line {
+  width: 1px; height: 36px;
+  background: var(--text-ghost);
+  animation: scrollPulse 2s ease-in-out infinite;
+  border-radius: 0.5px;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== Section ====== */
+.section {
+  position: relative; z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.section-label {
+  font-size: 11px; font-weight: 600;
+  color: var(--accent-1);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  transition: color 0.5s var(--spring);
+}
+
+.section h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.6px;
+  margin-bottom: 16px;
+  transition: color 0.5s var(--spring);
+}
+
+.section .desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+  transition: color 0.5s var(--spring);
+}
+
+/* ====== Stats Grid ====== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 80px;
+}
+
+@media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.stat-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: var(--card-shadow), var(--card-shadow-inset);
+  transition: all 0.5s var(--spring);
+}
+
+.stat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+
+.stat-number {
+  font-size: 36px; font-weight: 700;
+  color: var(--stat-number-color);
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 8px;
+  transition: color 0.5s var(--spring);
+}
+
+.stat-label {
+  font-size: 13px; color: var(--text-muted);
+  font-weight: 500;
+  transition: color 0.5s var(--spring);
+  letter-spacing: -0.1px;
+}
+
+/* ====== Timeline ====== */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 4px; bottom: 4px;
+  width: 1.5px;
+  background: var(--divider);
+  border-radius: 1px;
+  transition: background 0.5s var(--spring);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 32px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -28px; top: 6px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent-1);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+  transition: all 0.5s var(--spring);
+}
+
+.timeline-year {
+  font-size: 13px; font-weight: 600;
+  color: var(--accent-1);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  transition: color 0.5s var(--spring);
+}
+
+.timeline-title {
+  font-size: 16px; font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  transition: color 0.5s var(--spring);
+  letter-spacing: -0.2px;
+}
+
+.timeline-desc {
+  font-size: 14px; color: var(--text-muted);
+  line-height: 1.6;
+  transition: color 0.5s var(--spring);
+}
+
+/* ====== School Cards ====== */
+.schools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 900px) { .schools-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .schools-grid { grid-template-columns: 1fr; } }
+
+.school-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+  box-shadow: var(--card-shadow), var(--card-shadow-inset);
+  transition: all 0.4s var(--spring);
+  cursor: default;
+}
+
+.school-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  border-color: var(--accent-glow-strong);
+}
+
+.school-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 16px;
+  transition: all 0.5s var(--spring);
+}
+
+.school-name {
+  font-size: 17px; font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+  transition: color 0.5s var(--spring);
+}
+
+.school-majors {
+  font-size: 13px; color: var(--text-muted);
+  line-height: 1.7;
+  transition: color 0.5s var(--spring);
+}
+
+/* ====== Theme Modal ====== */
+.modal-overlay {
+  position: fixed; inset: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeInOverlay 0.3s var(--spring);
+}
+
+.modal-overlay.open { display: flex; }
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  position: relative;
+  width: 100%; max-width: 520px;
+  background: var(--modal-bg);
+  backdrop-filter: blur(60px) saturate(180%);
+  -webkit-backdrop-filter: blur(60px) saturate(180%);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-2xl);
+  padding: 36px 32px 32px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2), 0 0 0 0.5px rgba(0,0,0,0.08);
+  animation: modalIn 0.45s var(--spring);
+  max-height: 85vh;
+  overflow-y: auto;
+  transition: background 0.5s var(--spring), border-color 0.5s var(--spring);
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(24px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px; right: 18px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--surface-bg-alt);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s var(--spring);
+  z-index: 1;
+  font-family: var(--font-stack);
+}
+
+.modal-close:hover { background: var(--surface-bg-hover); color: var(--text-primary); }
+
+.modal-header { text-align: center; margin-bottom: 28px; }
+
+.modal-header h3 {
+  font-size: 24px; font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.4px;
+  transition: color 0.5s var(--spring);
+}
+
+.modal-header p {
+  font-size: 14px; color: var(--text-muted);
+  transition: color 0.5s var(--spring);
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 480px) { .theme-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.theme-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  padding: 20px 14px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s var(--spring);
+  overflow: hidden;
+}
+
+.theme-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+
+.theme-card.active { border-color: var(--accent-1); box-shadow: 0 0 0 4px var(--accent-glow); }
+
+.theme-card .theme-dots {
+  display: flex; gap: 5px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.theme-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%; flex-shrink: 0;
+}
+
+.theme-card .theme-name {
+  font-size: 13px; font-weight: 590;
+  color: #fff;
+  letter-spacing: -0.1px;
+}
+
+.theme-card .check-mark {
+  position: absolute;
+  top: 10px; right: 12px;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  color: #1d1d1f;
+  font-size: 12px; font-weight: 700;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-card.active .check-mark { display: flex; }
+
+.theme-card.light      { background: linear-gradient(150deg, #e8ecf1, #d0d5dd); }
+.theme-card.darkgray   { background: linear-gradient(150deg, #2d2d30, #1d1d1f); }
+.theme-card.midnight   { background: linear-gradient(150deg, #1a1a1a, #000000); }
+.theme-card.ocean      { background: linear-gradient(150deg, #0f2744, #0b1b2f); }
+.theme-card.maple      { background: linear-gradient(150deg, #e8d5c4, #d4a882); }
+.theme-card.sakura     { background: linear-gradient(150deg, #f2dde2, #e8ccd3); }
+
+.theme-card.light .theme-name,
+.theme-card.maple .theme-name,
+.theme-card.sakura .theme-name { color: #1d1d1f; }
+
+.theme-card.light .check-mark,
+.theme-card.maple .check-mark,
+.theme-card.sakura .check-mark { background: #1d1d1f; color: #fff; }
+
+/* ====== Toast ====== */
+.toast {
+  position: fixed; top: -80px; left: 50%; transform: translateX(-50%);
+  background: var(--toast-bg);
+  color: var(--text-primary);
+  padding: 12px 28px; border-radius: var(--radius-xl);
+  font-size: 14px; font-weight: 500; z-index: 300;
+  box-shadow: 0 8px 32px var(--toast-shadow), 0 2px 8px rgba(0,0,0,0.06);
+  animation: toastIn 0.45s var(--spring) forwards, toastOut 0.35s var(--spring) 2.2s forwards;
+  pointer-events: none;
+  letter-spacing: -0.1px;
+  transition: background 0.5s var(--spring), color 0.5s var(--spring);
+}
+
+@keyframes toastIn {
+  from { top: -80px; opacity: 0; }
+  to { top: 20px; opacity: 1; }
+}
+@keyframes toastOut {
+  from { top: 20px; opacity: 1; }
+  to { top: -80px; opacity: 0; }
+}
+
+/* ====== Footer ====== */
+.footer {
+  position: relative; z-index: 1;
+  border-top: 0.5px solid var(--divider);
+  padding: 48px 24px;
+  text-align: center;
+  transition: border-color 0.5s var(--spring);
+}
+
+.footer-content {
+  max-width: 600px; margin: 0 auto;
+}
+
+.footer-credit {
+  font-size: 14px; font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  transition: color 0.5s var(--spring);
+  letter-spacing: -0.1px;
+}
+
+.footer-role {
+  font-size: 12px; color: var(--text-muted);
+  margin-bottom: 20px;
+  transition: color 0.5s var(--spring);
+}
+
+.footer-info {
+  font-size: 12px; color: var(--text-ghost);
+  line-height: 1.8;
+  transition: color 0.5s var(--spring);
+}
+
+.footer a {
+  color: var(--accent-1);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.footer a:hover { opacity: 0.7; }
+
+/* ====== Scrollbar ====== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 2px; }
+
+/* ====== Fade-in on scroll ====== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--spring), transform 0.7s var(--spring);
+}
+
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ====== Responsive ====== */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .section { padding: 60px 20px; }
+  .hero { padding: 80px 20px 60px; }
+  .hero h1 { font-size: 32px; }
+  .hero .motto { font-size: 16px; }
+  .hero .motto span { display: block; margin: 4px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- Background -->
+<div class="bg">
+  <div class="bg-orb"></div>
+  <div class="bg-orb"></div>
+  <div class="bg-orb"></div>
+</div>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">河职大</a>
+    <div class="nav-links">
+      <a href="#about" class="nav-link">学校简介</a>
+      <a href="#history" class="nav-link">历史沿革</a>
+      <a href="#schools" class="nav-link">院系设置</a>
+      <button class="theme-btn" id="themeBtn">🎨 主题</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    全国首批本科层次职业大学
+  </div>
+  <div class="hero-crest">🎓</div>
+  <h1>河南科技职业大学</h1>
+  <p class="motto">
+    <span>厚德博学</span><span>·</span><span>求实创新</span>
+  </p>
+  <div class="hero-scroll">
+    <span>向下探索</span>
+    <div class="line"></div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="section" style="padding-top:0">
+  <div class="stats-grid fade-in">
+    <div class="stat-card">
+      <div class="stat-number">1981</div>
+      <div class="stat-label">建校年份</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2200+</div>
+      <div class="stat-label">占地面积（亩）</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2.4万+</div>
+      <div class="stat-label">在校学生</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">95%+</div>
+      <div class="stat-label">毕业生就业率</div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section fade-in" id="about">
+  <div class="section-label">学校简介</div>
+  <h2>坐落幸福河畔<br>培育应用英才</h2>
+  <p class="desc">
+    河南科技职业大学位于河南省周口市，是经国家教育部批准设立的全日制本科高校，也是全国首批、河南省唯一一所民办非营利性本科层次职业大学。学校以工学为主，工、管、艺、教、经等多学科协调发展，形成了"工科为主、重视实践、爱心办学"的鲜明特色。
+  </p>
+  <p class="desc" style="margin-top:-24px">
+    学校占地面积2200余亩，建筑面积77万多平方米，馆藏图书310余万册。现有教职工1400余人，其中"双师型"教师523人。设有10个院部，涵盖46个本、专科专业。校园坐落在幸福河畔，亭台相望、湖石相依，自然与人文和谐交融。
+  </p>
+</section>
+
+<!-- History -->
+<section class="section fade-in" id="history">
+  <div class="section-label">历史沿革</div>
+  <h2>四十余载风雨<br>从技校到大学</h2>
+  <p class="desc">
+    从1981年的一所职业技术学校起步，历经四十余年砥砺奋进，于2019年升格为全国首批本科层次职业大学，成为河南职业教育改革的重要标杆。
+  </p>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">1981</div>
+      <div class="timeline-title">周口市海燕技术学校</div>
+      <div class="timeline-desc">李海燕夫妇创办，开启职业教育之路</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2008</div>
+      <div class="timeline-title">周口科技职业学院</div>
+      <div class="timeline-desc">升格为普通高等职业学校，迈入高等教育行列</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2018</div>
+      <div class="timeline-title">全国首批试点学校</div>
+      <div class="timeline-desc">获批成为全国首批15所本科层次职业教育试点学校之一</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2019</div>
+      <div class="timeline-title">河南科技职业大学</div>
+      <div class="timeline-desc">教育部批准正式更名，成为河南省第一所"职业大学"，首批开设10个本科专业</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">至今</div>
+      <div class="timeline-title">持续发展</div>
+      <div class="timeline-desc">10个院部、46个本专科专业、200余家校企合作企业，毕业就业率保持95%以上</div>
+    </div>
+  </div>
+</section>
+
+<!-- Schools -->
+<section class="section fade-in" id="schools">
+  <div class="section-label">院系设置</div>
+  <h2>十大院部<br>多元学科布局</h2>
+  <p class="desc">
+    以工学为核心，工、管、艺、教、经、医多学科协调发展，构建七大专业集群。
+  </p>
+  <div class="schools-grid">
+    <div class="school-card">
+      <div class="school-icon">🔧</div>
+      <div class="school-name">机电工程学院</div>
+      <div class="school-majors">智能制造工程技术 · 机械设计制造及自动化 · 电气工程及自动化 · 汽车工程技术</div>
+    </div>
+    <div class="school-card">
+      <div class="school-icon">💻</div>
+      <div class="school-name">信息工程学院</div>
+      <div class="school-majors">计算机应用工程 · 软件工程技术 · 网络工程技术 · 电子信息工程 · 物联网工程</div>
+    </div>
+    <div class="school-card">
+      <div class="school-icon">🏗️</div>
+      <div class="school-name">建筑工程学院</div>
+      <div class="school-majors">建筑工程 · 工程造价 · 建筑工程技术 · 市政工程技术</div>
+    </div>
+    <div class="school-card">
+      <div class="school-icon">⚕️</div>
+      <div class="school-name">医学院</div>
+      <div class="school-majors">护理 · 康复治疗 · 临床医学 · 口腔医学 · 中医学 · 药学</div>
+    </div>
+    <div class="school-card">
+      <div class="school-icon">💼</div>
+      <div class="school-name">经济与管理学院</div>
+      <div class="school-majors">大数据与财务管理 · 大数据与会计 · 现代物流管理 · 工商企业管理</div>
+    </div>
+    <div class="school-card">
+      <div class="school-icon">🎓</div>
+      <div class="school-name">教育科学学院</div>
+      <div class="school-majors">学前教育 · 音乐表演 · 舞蹈表演</div>
+    </div>
+    <div class="school-card">
+      <div class="school-icon">🎨</div>
+      <div class="school-name">美术与艺术设计学院</div>
+      <div class="school-majors">环境艺术设计 · 服装与服饰设计 · 数字媒体艺术设计</div>
+    </div>
+    <div class="school-card">
+      <div class="school-icon">📚</div>
+      <div class="school-name">公共教学部门</div>
+      <div class="school-majors">马克思主义学院 · 公共基础教学部 · 公共艺术教学部</div>
+    </div>
+    <div class="school-card">
+      <div class="school-icon">🤝</div>
+      <div class="school-name">校企合作</div>
+      <div class="school-majors">200+知名企业合作 · 225个实验实训室 · 188个校外实习基地 · 1+X证书制度</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer fade-in">
+  <div class="footer-content">
+    <div class="footer-credit">设计者：靳浩</div>
+    <div class="footer-role">河南科技职业大学 学生作品</div>
+    <div class="footer-info">
+      校址：河南省周口市川汇区文昌大道东段6号<br>
+      校训：厚德博学、求实创新<br>
+      <a href="https://www.havust.edu.cn/" target="_blank" rel="noopener">学校官网</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Theme Modal -->
+<div class="modal-overlay" id="themeModal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-header">
+      <h3>选择主题风格</h3>
+      <p>为校园网站换个配色</p>
+    </div>
+    <div class="theme-grid">
+      <div class="theme-card light active" data-theme="light">
+        <div class="check-mark">✓</div>
+        <div class="theme-dots">
+          <span class="theme-dot" style="background:#0071e3"></span>
+          <span class="theme-dot" style="background:#5ac8fa"></span>
+          <span class="theme-dot" style="background:#bf5af2"></span>
+        </div>
+        <div class="theme-name">浅色</div>
+      </div>
+      <div class="theme-card darkgray" data-theme="darkgray">
+        <div class="check-mark">✓</div>
+        <div class="theme-dots">
+          <span class="theme-dot" style="background:#2997ff"></span>
+          <span class="theme-dot" style="background:#5ac8fa"></span>
+          <span class="theme-dot" style="background:#a855f7"></span>
+        </div>
+        <div class="theme-name">深空灰</div>
+      </div>
+      <div class="theme-card midnight" data-theme="midnight">
+        <div class="check-mark">✓</div>
+        <div class="theme-dots">
+          <span class="theme-dot" style="background:#0a84ff"></span>
+          <span class="theme-dot" style="background:#5e5ce6"></span>
+          <span class="theme-dot" style="background:#bf5af2"></span>
+        </div>
+        <div class="theme-name">午夜</div>
+      </div>
+      <div class="theme-card ocean" data-theme="ocean">
+        <div class="check-mark">✓</div>
+        <div class="theme-dots">
+          <span class="theme-dot" style="background:#5ac8fa"></span>
+          <span class="theme-dot" style="background:#0a84ff"></span>
+          <span class="theme-dot" style="background:#30d158"></span>
+        </div>
+        <div class="theme-name">深海</div>
+      </div>
+      <div class="theme-card maple" data-theme="maple">
+        <div class="check-mark">✓</div>
+        <div class="theme-dots">
+          <span class="theme-dot" style="background:#c7512e"></span>
+          <span class="theme-dot" style="background:#e8a838"></span>
+          <span class="theme-dot" style="background:#d4456a"></span>
+        </div>
+        <div class="theme-name">枫叶</div>
+      </div>
+      <div class="theme-card sakura" data-theme="sakura">
+        <div class="check-mark">✓</div>
+        <div class="theme-dots">
+          <span class="theme-dot" style="background:#e894a8"></span>
+          <span class="theme-dot" style="background:#c7a0d8"></span>
+          <span class="theme-dot" style="background:#f0c8c8"></span>
+        </div>
+        <div class="theme-name">樱色</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ====== Theme System ======
+const html = document.documentElement;
+let currentTheme = localStorage.getItem('hnvust_theme') || 'light';
+
+function applyTheme(showToastFlag) {
+  html.setAttribute('data-theme', currentTheme);
+  document.querySelectorAll('.theme-card').forEach(c => {
+    c.classList.toggle('active', c.dataset.theme === currentTheme);
+  });
+  localStorage.setItem('hnvust_theme', currentTheme);
+  if (showToastFlag) showToast('主题已切换');
+}
+
+// ====== Modal ======
+const themeModal = document.getElementById('themeModal');
+
+function openModal() { themeModal.classList.add('open'); }
+function closeModal() { themeModal.classList.remove('open'); }
+
+document.getElementById('themeBtn').addEventListener('click', () => {
+  applyTheme(false);
+  openModal();
+});
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+
+themeModal.addEventListener('click', e => {
+  if (e.target === themeModal) closeModal();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && themeModal.classList.contains('open')) closeModal();
+});
+
+// Theme card clicks
+document.querySelectorAll('.theme-card').forEach(card => {
+  card.addEventListener('click', () => {
+    currentTheme = card.dataset.theme;
+    applyTheme(true);
+  });
+});
+
+// ====== Toast ======
+function showToast(msg) {
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2800);
+}
+
+// ====== Scroll Fade-in ======
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ====== Init ======
+applyTheme(false);
+</script>
+
+</body>
+</html>
